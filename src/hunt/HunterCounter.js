@@ -19,12 +19,15 @@ const useStyles = makeStyles(theme => ({
 function HunterCounter(props) {
   const classes = useStyles();
   const { huntCounter } = props;
+  // Declare a new state variable, which we'll call "count"
+  const today = new Date();
+  const formattedDate = `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`;
 
   return (
     <div className={classes.badge}>
       <Chip
         icon={<FaceIcon/>}
-        label={`${huntCounter}/13`}
+        label={`${formattedDate}: ${huntCounter}/13`}
         variant="outlined"
         color="primary"
       />
