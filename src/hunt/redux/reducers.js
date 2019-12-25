@@ -12,8 +12,9 @@ import {
 } from './types';
 
 const INITIAL_STATE = {
+  duration: 'afternoon',
   isRegistered: false,
-  huntCounter: 2,
+  huntCounter: 0,
 };
 
 const huntReducer = (state = INITIAL_STATE, { type, err, value }) => {
@@ -27,7 +28,11 @@ const huntReducer = (state = INITIAL_STATE, { type, err, value }) => {
         err,
       };
     case HUNT_UNREGISTER_SUCCESS:
-      return { ...state, isRegistered: false };
+      return {
+        ...state,
+        isRegistered: false,
+        duration: value,
+      };
     case HUNT_UNREGISTER_ERROR:
       return {
         ...state,

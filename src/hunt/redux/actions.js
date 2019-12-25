@@ -13,7 +13,7 @@ const huntRegister = (duration) => (dispatch) => {
   return request.post('/hunt')
     .send({ duration })
     .then((res) => {
-      dispatch({ type: HUNT_REGISTER_SUCCESS });
+      dispatch({ type: HUNT_REGISTER_SUCCESS, value: res.duration });
     })
     .catch(err => dispatch({ type: HUNT_REGISTER_ERROR, err }));
 };

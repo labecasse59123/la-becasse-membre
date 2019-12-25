@@ -3,6 +3,12 @@ import prefix from 'superagent-prefix';
 
 const request = superagent.agent();
 
-request.use(prefix('http://localhost:9000/api'));
+let baseApi;
+if (process.env.NODE_ENV === 'production') {
+  baseApi = '/api';
+} else {
+  baseApi = 'http://localhost:9000/api';
+}
+request.use(prefix(baseApi));
 
 export default request;

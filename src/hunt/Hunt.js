@@ -6,6 +6,7 @@ import HuntForm from './HuntForm';
 const mapStateToProps = state => {
   return {
     isRegistered: state.hunt.isRegistered,
+    duration: state.hunt.duration,
   }
 };
 

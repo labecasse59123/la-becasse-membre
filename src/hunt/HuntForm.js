@@ -9,6 +9,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Grid from '@material-ui/core/Grid';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -30,8 +31,31 @@ const useStyles = makeStyles(theme => ({
 
 function HuntForm(props) {
   // handleSubmit is given by redux-form HoC
-  const {handleSubmit} = props;
+  const {handleSubmit, isRegistered, duration} = props;
   const classes = useStyles();
+
+  if(isRegistered) {
+    let slot;
+    switch (duration) {
+      case 'morning':
+        slot = 'Matinée';
+        break;
+      case 'afternoon':
+        slot = 'Après-midi';
+        break;
+      default:
+        slot = 'Journée';
+        break;
+    }
+
+    return (
+      <div className={classes.paper}>
+        <Typography gutterBottom>
+          Vous êtes déjà enregistré aujourd'hui sur le créneau : {slot}.
+        </Typography>
+      </div>
+    )
+  }
 
   const radioButton = ({input, ...rest}) => (
     <FormControl component="fieldset" className={classes.formControl}>
