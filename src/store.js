@@ -6,12 +6,14 @@ import {
 } from 'redux';
 
 import thunk from 'redux-thunk';
-import { reducer as formReducer } from 'redux-form'
+import { reducer as formReducer } from 'redux-form';
 
-import loginReducer from './login/redux'
+import loginReducer from './login/redux';
+import huntReducer from './hunt/redux';
 
 const appReducer = combineReducers({
   login: loginReducer,
+  hunt: huntReducer,
   form: formReducer,
 });
 const middlewares = [thunk];

@@ -38,7 +38,8 @@ function LoginForm(props) {
   const classes = useStyles();
 
   // handleSubmit is given by redux-form HoC
-  const { handleSubmit } = props;
+  const { handleSubmit, loginMessage } = props;
+  const errorMessage = loginMessage ? 'Information invalide' : null;
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -57,6 +58,7 @@ function LoginForm(props) {
                           ...custom
                         }) => (
               <TextField
+                error={!!loginMessage}
                 variant="outlined"
                 margin="normal"
                 required
@@ -66,6 +68,7 @@ function LoginForm(props) {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                helperText={errorMessage}
                 {...input}
                 {...custom}
               />
@@ -78,6 +81,7 @@ function LoginForm(props) {
                           ...custom
                         }) => (
               <TextField
+                error={!!loginMessage}
                 variant="outlined"
                 margin="normal"
                 required
@@ -86,6 +90,7 @@ function LoginForm(props) {
                 label="Mot de Passe"
                 type="password"
                 id="password"
+                helperText={errorMessage}
                 autoComplete="current-password"
                 {...input}
                 {...custom}

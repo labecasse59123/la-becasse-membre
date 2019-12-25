@@ -6,7 +6,7 @@ import {
 } from './types';
 
 const INITIAL_STATE = {
-  isAuthenticated: false,
+  isAuthenticated: true,
 };
 
 const loginReducer = (state = INITIAL_STATE, { type, err }) => {
