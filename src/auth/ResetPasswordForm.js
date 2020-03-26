@@ -47,7 +47,7 @@ function ResetPasswordForm(props) {
   const classes = useStyles();
 
   // handleSubmit is given by redux-form HoC
-  const { handleSubmit, codeProvidedMsg, passwordMissmatchMsg, dispatch, change } = props;
+  const { handleSubmit, codeProvidedMsg, passwordMissmatchMsg, dispatch, change, waiting } = props;
 
   // retrieve code from URL
   const code = useQuery().get('code') || -1;
@@ -115,6 +115,7 @@ function ResetPasswordForm(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
+            disabled={waiting}
           >
             Réinitialiser
           </Button>

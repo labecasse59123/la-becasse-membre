@@ -40,7 +40,7 @@ function LoginForm(props) {
   const classes = useStyles();
 
   // handleSubmit is given by redux-form HoC
-  const { handleSubmit, wrongPasswordMsg, wrongEmailMsg } = props;
+  const { handleSubmit, wrongPasswordMsg, wrongEmailMsg, waiting } = props;
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -104,6 +104,7 @@ function LoginForm(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
+            disabled={waiting}
           >
             Login
           </Button>

@@ -38,7 +38,7 @@ function ForgotPasswordForm(props) {
   const classes = useStyles();
 
   // handleSubmit is given by redux-form HoC
-  const { handleSubmit, errorMsg } = props;
+  const { handleSubmit, errorMsg, waiting } = props;
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -76,6 +76,7 @@ function ForgotPasswordForm(props) {
             fullWidth
             variant="contained"
             color="primary"
+            disabled={waiting}
             className={classes.submit}
           >
             Envoyer

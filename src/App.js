@@ -9,6 +9,7 @@ import Home from './Home';
 import Login from './auth/Login';
 import ResetPassword from './auth/ResetPassword';
 import ForgotPassword from './auth/ForgotPassword';
+import ResetPasswordInfos from './auth/ResetPasswordInfos';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/reset-password" component={ResetPassword} />
           <Route path="/forgot-password" component={ForgotPassword} />
+          <Route path="/reset-password-infos" component={ResetPasswordInfos} />
         </Router>
       </div>
     </Provider>

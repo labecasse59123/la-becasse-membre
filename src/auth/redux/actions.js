@@ -54,7 +54,7 @@ const forgotPassword = (email) => (dispatch) => {
     .send({ email })
     .then((res) => {
       dispatch({ type: FORGOT_PASSWORD_SUCCESS });
-      history.push('/reset-password');
+      history.push('/reset-password-infos');
     })
     .catch(error => {
       const { body: err }  = error.response;

@@ -4,7 +4,7 @@ import { authActions } from './redux';
 import ForgotPasswordForm from './ForgotPasswordForm';
 
 const mapStateToProps = state => {
-  const { err } = state.auth;
+  const { err, waiting } = state.auth;
   let errorMsg = null;
   if (err) {
     const { id } = err.message[0].messages[0];
@@ -22,6 +22,7 @@ const mapStateToProps = state => {
   }
   return {
     errorMsg,
+    waiting,
   }
 };
 

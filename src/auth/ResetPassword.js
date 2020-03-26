@@ -4,7 +4,7 @@ import { authActions } from './redux';
 import ResetPasswordForm from './ResetPasswordForm';
 
 const mapStateToProps = state => {
-  const { err } = state.auth;
+  const { err, waiting } = state.auth;
   let codeProvidedMsg = null;
   let passwordMissmatchMsg = null;
   if (err) {
@@ -27,6 +27,7 @@ const mapStateToProps = state => {
   return {
     codeProvidedMsg,
     passwordMissmatchMsg,
+    waiting,
   }
 };
 

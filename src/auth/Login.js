@@ -4,7 +4,7 @@ import { authActions } from './redux';
 import LoginForm from './LoginForm';
 
 const mapStateToProps = state => {
-  const { err } = state.auth;
+  const { err, waiting } = state.auth;
   let wrongEmailMsg = null;
   let wrongPasswordMsg = null;
   if (err) {
@@ -35,6 +35,7 @@ const mapStateToProps = state => {
   return {
     wrongPasswordMsg,
     wrongEmailMsg,
+    waiting,
   }
 };
 
