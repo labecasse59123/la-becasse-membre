@@ -11,17 +11,15 @@ const mapStateToProps = state => {
     const { id } = err.message[0].messages[0];
     switch (id) {
         case 'Auth.form.error.code.provide':
-          codeProvidedMsg = 'Le code fournit est incorrect';
+          codeProvidedMsg = 'Le code de réinitialisation fournit est incorrect';
           break;
         case 'Auth.form.error.password.matching':
           passwordMissmatchMsg = 'Les deux mots de passe ne correspondent pas';
           break;
         case 'Auth.form.error.params.provide':
-          codeProvidedMsg = 'Paramètre incorrect';
-          passwordMissmatchMsg = 'Paramètre incorrect';
+          passwordMissmatchMsg = 'Ce champs est obligatoire';
           break;
         default:
-          codeProvidedMsg = 'Une erreur inconnue est survenue';
           passwordMissmatchMsg = 'Une erreur inconnue est survenue';
           break;
     }

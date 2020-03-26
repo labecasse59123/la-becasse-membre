@@ -8,6 +8,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -32,13 +33,27 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  errorMsg: {
+    color: theme.palette.error.main,
+  },
 }));
+
+// hook that format query search params
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 function ResetPasswordForm(props) {
   const classes = useStyles();
 
   // handleSubmit is given by redux-form HoC
-  const { handleSubmit, codeProvidedMsg, passwordMissmatchMsg } = props;
+  const { handleSubmit, codeProvidedMsg, passwordMissmatchMsg, dispatch, change } = props;
+
+  // retrieve code from URL
+  const code = useQuery().get('code') || -1;
+  // Way to had code as a hidden field
+  dispatch(change('code', code));
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -50,27 +65,6 @@ function ResetPasswordForm(props) {
           Réinitialiser son mot de passe
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
-        <Field
-            name="code"
-            component={({
-                          input,
-                          ...custom
-                        }) => (
-              <TextField
-                error={!!codeProvidedMsg}
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="code"
-                label="Code reçu par mail"
-                id="code"
-                helperText={codeProvidedMsg}
-                {...input}
-                {...custom}
-              />
-              )}
-          />
           <Field
             name="password"
             component={({
@@ -125,6 +119,9 @@ function ResetPasswordForm(props) {
             Réinitialiser
           </Button>
         </form>
+        <p className={classes.errorMsg}>
+          {codeProvidedMsg}
+        </p>
       </div>
     </Container>
   );
