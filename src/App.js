@@ -6,7 +6,8 @@ import store from './store';
 import history from "./history";
 import PrivateRoute from './containers/PrivateRoute';
 import Home from './Home';
-import Login from './login/Login';
+import Login from './auth/Login';
+import ResetPassword from './auth/ResetPassword';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Router history={history}>
           <PrivateRoute exact path="/" component={Home} />
           <Route path="/login" component={Login} />
+          <Route path="/reset-password" component={ResetPassword} />
         </Router>
       </div>
     </Provider>

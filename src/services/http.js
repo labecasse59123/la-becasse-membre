@@ -7,7 +7,7 @@ let baseApi;
 if (process.env.NODE_ENV === 'production') {
   baseApi = '/api';
 } else {
-  baseApi = 'http://localhost:9000/api';
+  baseApi = 'http://localhost:1337';
 }
 request.use(prefix(baseApi));
 

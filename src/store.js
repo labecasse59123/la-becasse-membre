@@ -8,11 +8,11 @@ import {
 import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 
-import loginReducer from './login/redux';
+import authReducer from './auth/redux';
 import huntReducer from './hunt/redux';
 
 const appReducer = combineReducers({
-  login: loginReducer,
+  auth: authReducer,
   hunt: huntReducer,
   form: formReducer,
 });
