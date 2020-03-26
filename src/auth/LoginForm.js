@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -8,6 +8,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+
+import Link from '../layout/Link';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -107,6 +109,7 @@ function LoginForm(props) {
           </Button>
         </form>
       </div>
+      <Link to='/forgot-password' label='Mot de passe oublié ?' />
     </Container>
   );
 }
