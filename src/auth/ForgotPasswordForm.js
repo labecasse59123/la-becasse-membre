@@ -57,7 +57,7 @@ function ForgotPasswordForm(props) {
                           ...custom
                         }) => (
               <TextField
-                error={!!codeProvidedMsg}
+                error={!!errorMsg}
                 variant="outlined"
                 margin="normal"
                 required
@@ -65,7 +65,7 @@ function ForgotPasswordForm(props) {
                 name="email"
                 label="Email"
                 id="email"
-                helperText={codeProvidedMsg}
+                helperText={errorMsg}
                 {...input}
                 {...custom}
               />

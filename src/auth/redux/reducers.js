@@ -4,6 +4,7 @@ import {
   LOGIN_ERROR,
   LOGOUT,
   RESET_PASSWORD_ERROR,
+  FORGOT_PASSWORD_ERROR,
 } from './types';
 
 const INITIAL_STATE = {
@@ -16,6 +17,7 @@ const authReducer = (state = INITIAL_STATE, { type, err }) => {
       return { isAuthenticated: false };
     case LOGIN_ERROR:
     case RESET_PASSWORD_ERROR:
+    case FORGOT_PASSWORD_ERROR:
       return {
         isAuthenticated: false,
         err,

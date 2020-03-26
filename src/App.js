@@ -8,6 +8,7 @@ import PrivateRoute from './containers/PrivateRoute';
 import Home from './Home';
 import Login from './auth/Login';
 import ResetPassword from './auth/ResetPassword';
+import ForgotPassword from './auth/ForgotPassword';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <PrivateRoute exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/reset-password" component={ResetPassword} />
+          <Route path="/forgot-password" component={ForgotPassword} />
         </Router>
       </div>
     </Provider>
