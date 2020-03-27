@@ -110,7 +110,8 @@ function LoginForm(props) {
           </Button>
         </form>
       </div>
-      <Link to='/forgot-password' label='Mot de passe oublié ?' />
+      <Link to='/forgot-password' label='Mot de passe oublié ?' /><br/>
+      <Link to='/register' label='Inscription' />
     </Container>
   );
 }

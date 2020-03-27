@@ -10,6 +10,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useLocation } from 'react-router-dom';
 
+import Link from '../layout/Link';
+
 const useStyles = makeStyles(theme => ({
   '@global': {
     body: {
@@ -124,6 +126,7 @@ function ResetPasswordForm(props) {
           {codeProvidedMsg}
         </p>
       </div>
+      <Link to="/login" label="Retour à l'authentification" />
     </Container>
   );
 }

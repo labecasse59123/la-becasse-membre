@@ -49,7 +49,7 @@ function RegisterForm(props) {
           <PersonAddOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          La Bécasse - Enregistrement
+          La Bécasse - Inscription
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Field
