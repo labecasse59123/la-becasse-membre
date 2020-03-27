@@ -10,6 +10,8 @@ import Login from './auth/Login';
 import ResetPassword from './auth/ResetPassword';
 import ForgotPassword from './auth/ForgotPassword';
 import ResetPasswordInfos from './auth/ResetPasswordInfos';
+import Register from './auth/Register';
+import RegisterInfos from './auth/RegisterInfos';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Router history={history}>
           <PrivateRoute exact path="/" component={Home} />
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/register-infos" component={RegisterInfos} />
           <Route path="/reset-password" component={ResetPassword} />
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/reset-password-infos" component={ResetPasswordInfos} />

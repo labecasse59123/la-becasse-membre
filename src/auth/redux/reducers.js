@@ -5,8 +5,13 @@ import {
   LOGOUT,
   RESET_PASSWORD,
   FORGOT_PASSWORD,
+  RESET_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_SUCCESS,
   RESET_PASSWORD_ERROR,
   FORGOT_PASSWORD_ERROR,
+  REGISTER,
+  REGISTER_SUCCESS,
+  REGISTER_ERROR,
 } from './types';
 
 const INITIAL_STATE = {
@@ -19,6 +24,7 @@ const authReducer = (state = INITIAL_STATE, { type, err }) => {
     case LOGOUT:
       return { isAuthenticated: false };
     case LOGIN_ERROR:
+    case REGISTER_ERROR:
     case RESET_PASSWORD_ERROR:
     case FORGOT_PASSWORD_ERROR:
       return {
@@ -26,9 +32,14 @@ const authReducer = (state = INITIAL_STATE, { type, err }) => {
         waiting: false,
         err,
       };
+    case REGISTER_SUCCESS:
+    case RESET_PASSWORD_SUCCESS:
+    case FORGOT_PASSWORD_SUCCESS:
+      return { isAuthenticated: false, waiting: false };
     case LOGIN_SUCCESS:
       return { isAuthenticated: true, waiting: false };
     case LOGIN:
+    case REGISTER:
     case RESET_PASSWORD:
     case FORGOT_PASSWORD:
       return {

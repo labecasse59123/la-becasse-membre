@@ -11,6 +11,9 @@ import {
   FORGOT_PASSWORD,
   FORGOT_PASSWORD_ERROR,
   FORGOT_PASSWORD_SUCCESS,
+  REGISTER,
+  REGISTER_SUCCESS,
+  REGISTER_ERROR,
 } from './types';
 
 const login = (username, password) => (dispatch) => {
@@ -62,10 +65,25 @@ const forgotPassword = (email) => (dispatch) => {
     });
 };
 
+const register = (email, password) => (dispatch) => {
+  dispatch({ type: REGISTER });
+  return request.post('/auth/local/register')
+    .send({ username: email, email, password })
+    .then((res) => {
+      dispatch({ type: REGISTER_SUCCESS });
+      history.push('/register-infos');
+    })
+    .catch(error => {
+      const { body: err }  = error.response;
+      dispatch({ type: REGISTER_ERROR, err })
+    });
+};
+
 export default {
   login,
   logout,
   resetPassword,
   forgotPassword,
+  register,
 };
 
