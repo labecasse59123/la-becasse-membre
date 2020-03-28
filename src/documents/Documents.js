@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,7 +11,7 @@ import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 import { connect } from 'react-redux';
 
 import { documentActions } from './redux';
-import Header from '../layout/Header';
+import Layout from '../layout/Layout';
 
 const useStyles = makeStyles(theme => ({
   documents: {
@@ -45,17 +44,21 @@ function Document(props) {
 
 function Loading() {
   return (
-    <Typography variant="body2" color="textSecondary">
-      Chargement des documents...
-    </Typography>
+    <Grid item xs={12}>
+      <Typography variant="body2" color="textSecondary">
+        Chargement des documents...
+      </Typography>
+    </Grid>
   );
 }
 
 function NoDocuments() {
   return (
+    <Grid item xs={12}>
       <Typography variant="body2" color="textSecondary">
         Aucun document disponible.
       </Typography>
+    </Grid>
   );
 }
 
@@ -72,13 +75,11 @@ function DocumentView(props) {
   let content = waiting ? (<Loading />) : documentList;
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <Header title="La Bécasse - Documents" />
+    <Layout title="La Bécasse - Documents">
       <Grid className={classes.documents} container spacing={3}>
         {content}
       </Grid>
-    </React.Fragment>
+    </Layout>
   );
 }
 

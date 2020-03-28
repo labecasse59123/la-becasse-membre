@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
   toolbarTitle: {
     flex: 1,
   },
+  menuIcon: {
+    color: 'white',
+  }
 }));
 
 export default function Header(props) {
@@ -23,7 +26,9 @@ export default function Header(props) {
   return (
     <AppBar>
       <Toolbar className={classes.toolbar}>
-        <IconButton onClick={toggleDrawer}><MenuIcon color="secondary" /></IconButton>
+        <IconButton onClick={toggleDrawer}>
+          <MenuIcon className={classes.menuIcon} />
+        </IconButton>
         <Typography
           component="h2"
           variant="h5"
