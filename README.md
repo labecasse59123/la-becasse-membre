@@ -66,3 +66,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+## Deployment
+ To start strapi in develop mode with pm2:
+ `pm2 start npm --name labecassestrapi -- run develop`
+
+To start strapi in production mode with pm2 :
+`pm2 start npm --name labecassestrapi -- run start`

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { find } from 'lodash';
+import { reset } from 'redux-form';
 
 import { huntActions } from './redux';
 import HuntForm from './HuntForm';
@@ -27,8 +28,10 @@ const mapDispatchToProps = dispatch => {
   return {
     onSubmit: (values) => {
       const { duration } = values;
+      console.log(values);
       if (duration) {
-        dispatch(huntActions.huntRegister(duration));
+        dispatch(huntActions.huntRegister(duration))
+        .then(() => dispatch(reset('hunt')));
       } else {
         dispatch(huntActions.huntUnregister());
       }
