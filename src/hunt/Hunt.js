@@ -1,12 +1,24 @@
 import { connect } from 'react-redux';
+import { find } from 'lodash';
 
 import { huntActions } from './redux';
 import HuntForm from './HuntForm';
 
 const mapStateToProps = state => {
+  const { user } = state.auth;
+  const { huntSessions } = state.hunt;
+
+  const hunt = find(huntSessions, s => s.user && s.user.email === user.email);
+  
+  if (hunt) {
+    return {
+      isRegistered: true,
+      duration: hunt.duration,
+    }
+  }
   return {
-    isRegistered: state.hunt.isRegistered,
-    duration: state.hunt.duration,
+    isRegistered: false,
+    duration: 'day',
   }
 };
 
@@ -15,8 +27,11 @@ const mapDispatchToProps = dispatch => {
   return {
     onSubmit: (values) => {
       const { duration } = values;
-      dispatch(huntActions.huntRegister(duration))
-    }
+      dispatch(huntActions.huntRegister(duration));
+    },
+    fetchHunt: () => {
+      dispatch(huntActions.huntFetch());
+    },
   }
 };
 

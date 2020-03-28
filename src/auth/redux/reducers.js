@@ -17,9 +17,10 @@ import {
 const INITIAL_STATE = {
   isAuthenticated: false,
   waiting: false,
+  user: {},
 };
 
-const authReducer = (state = INITIAL_STATE, { type, err }) => {
+const authReducer = (state = INITIAL_STATE, { type, err, value }) => {
   switch (type) {
     case LOGOUT:
       return { isAuthenticated: false };
@@ -37,7 +38,7 @@ const authReducer = (state = INITIAL_STATE, { type, err }) => {
     case FORGOT_PASSWORD_SUCCESS:
       return { isAuthenticated: false, waiting: false };
     case LOGIN_SUCCESS:
-      return { isAuthenticated: true, waiting: false };
+      return { isAuthenticated: true, waiting: false, user: value };
     case LOGIN:
     case REGISTER:
     case RESET_PASSWORD:

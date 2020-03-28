@@ -18,12 +18,13 @@ import {
 
 const login = (username, password) => (dispatch) => {
   dispatch({ type: LOGIN });
+  localStorage.removeItem('jwt');
   return request.post('/auth/local')
     .send({ identifier: username, password })
     .then((res) => {
-      const { jwt } = res.body;
+      const { jwt, user } = res.body;
       localStorage.setItem('jwt', jwt);
-      dispatch({ type: LOGIN_SUCCESS });
+      dispatch({ type: LOGIN_SUCCESS, value: user });
       history.push('/');
     })
     .catch(error => {

@@ -5,55 +5,44 @@ import {
   HUNT_UNREGISTER,
   HUNT_UNREGISTER_SUCCESS,
   HUNT_UNREGISTER_ERROR,
-  HUNT_COUNTER,
-  HUNT_COUNTER_SUCCESS,
-  HUNT_COUNTER_ERROR,
+  HUNT_FETCH,
+  HUNT_FETCH_SUCCESS,
+  HUNT_FETCH_ERROR,
 
 } from './types';
 
 const INITIAL_STATE = {
-  duration: 'afternoon',
-  isRegistered: false,
-  huntCounter: 0,
+  huntSessions: [],
+  registerSuccess: false,
+  unregisterSuccess: false,
 };
 
 const huntReducer = (state = INITIAL_STATE, { type, err, value }) => {
   switch (type) {
-    case HUNT_REGISTER_SUCCESS:
-      return { ...state, isRegistered: true };
     case HUNT_REGISTER_ERROR:
-      return {
-        ...state,
-        isRegistered: false,
-        err,
-      };
-    case HUNT_UNREGISTER_SUCCESS:
-      return {
-        ...state,
-        isRegistered: false,
-        duration: value,
-      };
     case HUNT_UNREGISTER_ERROR:
       return {
         ...state,
-        isRegistered: true,
         err,
       };
-    case HUNT_COUNTER_SUCCESS:
+    case HUNT_FETCH_SUCCESS:
       return {
-        ...state,
-        huntCounter: value,
+        huntSessions: value,
       };
-    case HUNT_COUNTER_ERROR:
+    case HUNT_FETCH_ERROR:
       return {
-        ...state,
-        huntCounter: 0,
+        huntSessions: [],
+        err,
       };
-    case HUNT_COUNTER:
+    case HUNT_REGISTER_SUCCESS:
+    case HUNT_UNREGISTER_SUCCESS:
+    case HUNT_FETCH:
     case HUNT_REGISTER:
     case HUNT_UNREGISTER:
     default:
-      return state;
+      return {
+        ...state
+      };
   }
 };
 

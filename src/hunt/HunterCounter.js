@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
   return {
-    huntCounter: state.hunt.huntCounter,
+    huntCounter: state.hunt.huntSessions.length,
   }
 };
 

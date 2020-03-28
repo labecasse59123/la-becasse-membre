@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Field, reduxForm} from 'redux-form'
 import Button from '@material-ui/core/Button';
 import Radio from '@material-ui/core/Radio';
@@ -31,8 +31,11 @@ const useStyles = makeStyles(theme => ({
 
 function HuntForm(props) {
   // handleSubmit is given by redux-form HoC
-  const {handleSubmit, isRegistered, duration} = props;
+  const {handleSubmit, isRegistered, duration, fetchHunt} = props;
   const classes = useStyles();
+
+  // We load the data from the API (componentDidMount equivalent)
+  useEffect(() => fetchHunt(), [fetchHunt]);
 
   if(isRegistered) {
     let slot;
@@ -51,7 +54,7 @@ function HuntForm(props) {
     return (
       <div className={classes.paper}>
         <Typography gutterBottom>
-          Vous êtes déjà enregistré aujourd'hui sur le créneau : {slot}.
+          Vous êtes enregistré aujourd'hui sur le créneau : {slot}.
         </Typography>
       </div>
     )
@@ -74,9 +77,6 @@ function HuntForm(props) {
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid item xs={12} sm={8}>
             <Field name="duration" component={radioButton}>
-              <Radio value="morning" label="Matin"/>
-              <Radio value="afternoon" label="Après-midi"/>
-              <Radio value="day" label="Journée"/>
             </Field>
           </Grid>
           <Button
