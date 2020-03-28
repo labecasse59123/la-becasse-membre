@@ -11,6 +11,7 @@ import {
   HUNT_FETCH_SUCCESS,
   HUNT_FETCH_ERROR,
 } from './types';
+import {find} from 'lodash';
 
 const huntRegister = (duration) => (dispatch, getState) => {
   dispatch({ type: HUNT_REGISTER });
@@ -24,10 +25,19 @@ const huntRegister = (duration) => (dispatch, getState) => {
     .catch(err => dispatch({ type: HUNT_REGISTER_ERROR, err }));
 };
 
-const huntUnregister = (duration) => (dispatch) => {
+const huntUnregister = () => (dispatch, getState) => {
   dispatch({ type: HUNT_UNREGISTER });
-  return request.delete('/hunting-sessions')
-    .send()
+  const { user } = getState().auth;
+  const { huntSessions } = getState().hunt;
+
+  const hunt = find(huntSessions, s => s.user && s.user.email === user.email);
+  
+  if (!hunt) {
+    return Promise.resolve(() => dispatch({ type: HUNT_UNREGISTER_SUCCESS }));
+  }
+
+  return request.delete(`/hunting-sessions/${hunt._id}`)
+    .send(hunt)
     .then((res) => {
       dispatch({ type: HUNT_UNREGISTER_SUCCESS });
       dispatch(huntFetch());

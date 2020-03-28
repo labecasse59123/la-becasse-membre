@@ -18,7 +18,7 @@ export default function Home(props) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Header title="La Bécasse - Espace Membre" />
+      <Header title="La Bécasse - Inscription Chasse" />
       <div className={classes.hunt}>
         <HuntCounter {...props} />
         <Hunt {...props} />

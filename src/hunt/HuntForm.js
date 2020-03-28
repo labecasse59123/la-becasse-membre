@@ -56,6 +56,17 @@ function HuntForm(props) {
         <Typography gutterBottom>
           Vous êtes enregistré aujourd'hui sur le créneau : {slot}.
         </Typography>
+        <form noValidate onSubmit={handleSubmit}>
+        <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Se Désinscrire
+          </Button>
+        </form>
       </div>
     )
   }
@@ -76,8 +87,7 @@ function HuntForm(props) {
       <div className={classes.paper}>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid item xs={12} sm={8}>
-            <Field name="duration" component={radioButton}>
-            </Field>
+            <Field name="duration" component={radioButton} />
           </Grid>
           <Button
             type="submit"
