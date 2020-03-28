@@ -28,7 +28,6 @@ const mapDispatchToProps = dispatch => {
   return {
     onSubmit: (values) => {
       const { duration } = values;
-      console.log(values);
       if (duration) {
         dispatch(huntActions.huntRegister(duration))
         .then(() => dispatch(reset('hunt')));

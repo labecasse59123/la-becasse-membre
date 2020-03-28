@@ -10,10 +10,12 @@ import { reducer as formReducer } from 'redux-form';
 
 import authReducer from './auth/redux';
 import huntReducer from './hunt/redux';
+import documentReducer from './documents/redux';
 
 const appReducer = combineReducers({
   auth: authReducer,
   hunt: huntReducer,
+  document: documentReducer,
   form: formReducer,
 });
 const middlewares = [thunk];

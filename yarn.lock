@@ -9444,11 +9444,6 @@ stylehacks@^4.0.0:
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
 
-superagent-jwt@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/superagent-jwt/-/superagent-jwt-0.3.0.tgz#e735151a7b0026b178f7cc05df60b3a4aaebc3f7"
-  integrity sha1-5zUVGnsAJrF498wF32CzpKrrw/c=
-
 superagent-prefix@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/superagent-prefix/-/superagent-prefix-0.0.2.tgz#b15bbb1353f889b00d25af10b4f11b350d203b06"

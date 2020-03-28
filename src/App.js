@@ -12,6 +12,7 @@ import ForgotPassword from './auth/ForgotPassword';
 import ResetPasswordInfos from './auth/ResetPasswordInfos';
 import Register from './auth/Register';
 import RegisterInfos from './auth/RegisterInfos';
+import Documents from './documents/Documents';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <div className="App">
         <Router history={history}>
           <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute path="/documents" component={Documents} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/register-infos" component={RegisterInfos} />
