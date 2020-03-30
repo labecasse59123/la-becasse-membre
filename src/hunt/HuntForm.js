@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {Field, reduxForm} from 'redux-form'
 import Button from '@material-ui/core/Button';
 import Radio from '@material-ui/core/Radio';
@@ -31,11 +31,8 @@ const useStyles = makeStyles(theme => ({
 
 function HuntForm(props) {
   // handleSubmit is given by redux-form HoC
-  const {handleSubmit, isRegistered, duration, fetchHunt} = props;
+  const {handleSubmit, isRegistered, duration } = props;
   const classes = useStyles();
-
-  // We load the data from the API (componentDidMount equivalent)
-  useEffect(() => fetchHunt(), [fetchHunt]);
 
   if(isRegistered) {
     let slot;

@@ -28,6 +28,7 @@ const login = (username, password) => (dispatch) => {
       history.push('/');
     })
     .catch(error => {
+      console.log(error);
       const { body: err }  = error.response;
       dispatch({ type: LOGIN_ERROR, err })
     });

@@ -5,7 +5,7 @@ import './App.css';
 import store from './store';
 import history from "./history";
 import PrivateRoute from './containers/PrivateRoute';
-import Home from './Home';
+import Hunt from './hunt/Hunt';
 import Login from './auth/Login';
 import ResetPassword from './auth/ResetPassword';
 import ForgotPassword from './auth/ForgotPassword';
@@ -19,7 +19,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Router history={history}>
-          <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute exact path="/" component={Hunt} />
           <PrivateRoute path="/documents" component={Documents} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
