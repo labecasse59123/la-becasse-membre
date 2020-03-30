@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { documentActions } from './redux';
 import Layout from '../layout/Layout';
@@ -21,10 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Document(props) {
-  const { name, url } = props;
-
-  return (
+const Document = ({ name, url }) => (
     <Grid item xs={12} sm={6} md={4}>
       <Card>
         <CardContent>
@@ -40,39 +37,37 @@ function Document(props) {
       </Card>
     </Grid>
   );
-}
 
-function Loading() {
-  return (
+const Loading = () => (
     <Grid item xs={12}>
       <Typography variant="body2" color="textSecondary">
         Chargement des documents...
       </Typography>
     </Grid>
   );
-}
 
-function NoDocuments() {
-  return (
+const NoDocuments = () => (
     <Grid item xs={12}>
       <Typography variant="body2" color="textSecondary">
         Aucun document disponible.
       </Typography>
     </Grid>
   );
-}
 
-function DocumentView(props) {
+export default function DocumentView(props) {
   const classes = useStyles();
 
-  const  { documents, fetchDocuments, waiting } = props;
-  useEffect(() => fetchDocuments(), [fetchDocuments]);
+  const { documents, waiting } = useSelector(state => state.document);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(documentActions.fetchDocuments())
+  }, [dispatch]);
 
   const documentList = documents.length ? 
         documents.map(doc => (<Document key={doc._id} {...doc} />))
        : (<NoDocuments />);
 
-  let content = waiting ? (<Loading />) : documentList;
+  const content = waiting ? (<Loading />) : documentList;
 
   return (
     <Layout title="La Bécasse - Documents">
@@ -82,26 +77,3 @@ function DocumentView(props) {
     </Layout>
   );
 }
-
-
-const mapStateToProps = state => {
-  const { documents, waiting } = state.document;
-
-  return {
-    documents,
-    waiting,
-  }
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchDocuments: () => {
-      dispatch(documentActions.fetchDocuments());
-    },
-  }
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DocumentView);
